@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="greengram2.feed.FeedFavMapper">
+    <!--좋아요-->
+    <insert id="insFav">
+        insert into t_feed_fav set
+        ifeed= #{ifeed}, iuser= #{iuser}
+    </insert>
+    <!--좋아요 취소-->
+    <delete id="delFav">
+        delete from t_feed_fav
+        where ifeed= #{ifeed} and iuser= #{iuser}
+    </delete>
+    <!--피드 삭제될 때의 좋아요 삭제-->
+    <delete id="delFavByIfeed">
+        delete from t_feed_fav
+        where ifeed= #{ifeed}
+    </delete>
+</mapper>

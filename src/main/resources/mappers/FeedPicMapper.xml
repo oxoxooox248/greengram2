@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="greengram2.feed.FeedPicMapper">
+    <!--피드 작성될 때의 사진 추가-->
+    <insert id="insFeedPic">
+        insert into t_feed_pics
+        (ifeed, pic) values
+        <foreach collection="pics" item="pic" separator=",">
+            (#{ifeed}, #{pic})
+        </foreach>
+    </insert>
+    <!--피드의 사진들 -->
+    <select id="selPicAll">
+        select pic from t_feed_pics
+        where ifeed= #{ifeed}
+    </select>
+    <!--피드 삭제될 때의 사진 삭제-->
+    <delete id="delPicByIfeed">
+        delete from t_feed_pics
+        where ifeed= #{ifeed}
+    </delete>
+</mapper>
